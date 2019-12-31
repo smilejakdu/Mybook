@@ -3,13 +3,13 @@ package com.example.cns09.study.Navi.BookAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +19,7 @@ import com.example.cns09.study.KyoboWebActivity;
 import com.example.cns09.study.Navi.BookModel.Item;
 import com.example.cns09.study.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -46,7 +47,11 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         bookViewHolder.tvTitle.setText(Html.fromHtml(item.getTitle()));
         String bookTitle = item.getTitle().replaceAll("<b>", "").replaceAll("</b>", "").trim();
         bookViewHolder.tvAuthor.setText(Html.fromHtml(item.getAuthor()));
-        bookViewHolder.tvPrice.setText(Html.fromHtml(item.getPrice()));
+        String bookPrice = String.valueOf(Html.fromHtml(item.getPrice()));
+        int parserInt = Integer.parseInt(bookPrice);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        String formattedStringPrice = decimalFormat.format(parserInt);
+        bookViewHolder.tvPrice.setText(Html.fromHtml(formattedStringPrice) + "원");
         bookViewHolder.llBookBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

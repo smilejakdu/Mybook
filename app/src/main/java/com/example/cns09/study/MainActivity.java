@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.example.cns09.study.Navi.BookSearch.BookSearchActivity;
+import com.example.cns09.study.Navi.Note.NoteActivity;
 import com.example.cns09.study.Navi.StrechActivity;
 import com.example.cns09.study.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -122,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.search) {
             Intent intent = new Intent(MainActivity.this, BookSearchActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.note) {
+            Intent intent = new Intent(MainActivity.this, NoteActivity.class);
             startActivity(intent);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

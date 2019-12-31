@@ -20,5 +20,10 @@
             android:id="@+id/search"
             android:icon="@drawable/search"
             android:title="검색" />
+
+        <item
+            android:id="@+id/note"
+            android:icon="@drawable/note"
+            android:title="메모" />
     </group>
 </menu>

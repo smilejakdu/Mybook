@@ -65,7 +65,7 @@ public class BookSearchActivity extends AppCompatActivity {
         });
 
         setSupportActionBar(tbBack);
-        setTitle("Movie");
+        setTitle("Mybook");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 

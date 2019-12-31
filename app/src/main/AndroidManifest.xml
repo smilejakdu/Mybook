@@ -20,6 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Navi.Note.NoteActivity"></activity>
+        <activity android:name=".Navi.Note.AddEditNoteActivity"></activity>
         <activity android:name=".Navi.BookSearch.BookSearchActivity" />
         <activity android:name=".KyoboWebActivity" />
         <activity android:name=".MainActivity">

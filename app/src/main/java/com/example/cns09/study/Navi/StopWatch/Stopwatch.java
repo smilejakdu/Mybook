@@ -42,25 +42,25 @@ public class Stopwatch extends AppCompatActivity {
         context = this;
         handler = new Handler();
 
+//       항상 stopInfoArrayList 이 init_rcv () 함수 위에 있어야 한다.
+        stopInfoArrayList = sharedStop.Stopedit(this);
         init_rcv();
         startButton();
         pauseButton();
         resetButton();
         saveButton();
 
-        stopInfoArrayList = sharedStop.Stopedit(this);
-
     }
+
+
 
     private void saveButton() {
         //저장버튼
         binding.ivSave.setOnClickListener(view -> {
-
             binding.tvWatch.getText();
             getStopInfoArrayListFromSp(binding.tvWatch.getText().toString());  // 숫자로 받은것을 String 으로 바꿔서 받게된다
             stopadapter.sList = sharedStop.Stopedit(context);
             stopadapter.notifyDataSetChanged();
-
         });
     }
 
@@ -100,9 +100,10 @@ public class Stopwatch extends AppCompatActivity {
 
 
     private void init_rcv() {
-        binding.rcvWatch.setLayoutManager(sLayoutManager);
         binding.rcvWatch.setHasFixedSize(true);
         sLayoutManager = new LinearLayoutManager(this);
+        binding.rcvWatch.setLayoutManager(sLayoutManager);
+//        어댑터 설정
         stopadapter = new Stopadapter(this, stopInfoArrayList);
         binding.rcvWatch.setAdapter(stopadapter);
     }
@@ -115,13 +116,13 @@ public class Stopwatch extends AppCompatActivity {
 
     }
 
-    public void getStopInfoArrayListFromSp(String text) {
+    public void getStopInfoArrayListFromSp(String timeStr) {
 
         String base = getloadData();
         String split = "@";
-        String base2 = base + text + split;
+        String base2 = base + timeStr + split;
         SharedStop sharedStop = new SharedStop();
-        sharedStop.saveData(this, base2);
+        sharedStop.saveData(context, base2);
 
     }
 
